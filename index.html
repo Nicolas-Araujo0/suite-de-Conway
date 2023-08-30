@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ol>
+    </ol>
+</body>
+<script>
+    let ul = document.querySelector("ol")
+    let li = document.createElement("li");
+    let rowNumber = 15;
+    // nombre de ligne a afficher
+
+    let array = [1];
+    // chiffre de base
+
+    li.textContent = array;
+    ul.append(li);
+    // affichage du chiffre de base
+
+    for (let index = 0; index < rowNumber; index++) {
+        newRow();
+    }
+    // boucle pour afficher x lignes
+
+    function newRow(index) {
+        const li = document.createElement("li");
+        let count = 0;
+        let rowResult = [];
+        // tableau pour stocker les valeurs a afficher
+        for (let index = 0; index < array.length; index++) {
+            count++
+            // on incrémente le compteur pour chaque chiffre du tableau
+
+            if (array[index] != array[index + 1]) {
+                // si le chiffre actuel est différent du prochain alors on ajoute dans un tableau
+                // le nombre de répétition du chiffre et le chiffre en question
+                rowResult.push(count, array[index]);
+                count = 0;
+                // on remet le compteur a zéro après l'ajout
+            }
+
+        }
+        li.textContent = rowResult;
+        ul.append(li);
+        array = rowResult;
+        // changer la valeur de base à celle de la nouvelle ligne
+    }
+
+</script>
+
+</html>
